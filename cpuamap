@@ -6,6 +6,10 @@
 #                               
 #########################################################################################
 
+# This is an example script for setting up a Cpu Affinity map. There are cases, where you can 
+# reduce context switching (which is expensive), or you would like to pin a process to a certain 
+# cpu cores or to a single core.
+
 #  Give Soundcard it's own CPU [Core 4 (3)] . Put the OS/kernel on the 1st 3 CPUs [0-2] - same with X, 
 #  etc. Jackd and friends can play on the other 5 cores [5-7 are SMT, which is probably 
 #  fine. if not actually a good thing. being as their should be a lot of float/FPU use going on.
@@ -19,7 +23,7 @@ echo 2048 > /sys/block/sda/queue/nr_requests
 
 # Intel HDA / PCE - hw:0,0 
 
-# echo 0-7 > /proc/irq/47/smp_affinity_list
+echo 0-7 > /proc/irq/47/smp_affinity_list
 
 # i915 Intel GMA 4600
 
@@ -37,9 +41,9 @@ echo 0-1 > /proc/irq/43/smp_affinity_list
 
 echo 0-1 > /proc/irq/9/smp_affinity_list
 
-# xhci_hcd disabled in BIOS for Presonus
+# xhci_hcd 
 
-# echo 0-7 > /proc/irq/42/smp_affinity_list
+echo 0-7 > /proc/irq/42/smp_affinity_list
 
 # ehci_hcd:usb3
 
