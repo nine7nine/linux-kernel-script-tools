@@ -6,9 +6,6 @@
 #                               
 #########################################################################################
 
-#
-#  Interrupt Map:
-#
 #  Give Soundcard it's own CPU [Core 4 (3)] . Put the OS/kernel on the 1st 3 CPUs [0-2] - same with X, 
 #  etc. Jackd and friends can play on the other 5 cores [5-7 are SMT, which is probably 
 #  fine. if not actually a good thing. being as their should be a lot of float/FPU use going on.
