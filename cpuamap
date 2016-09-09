@@ -1,0 +1,63 @@
+#!/bin/bash
+
+#########################################################################################
+#
+#                               Cpu Affinity Map
+#                               
+#########################################################################################
+
+#
+#  Interrupt Map:
+#
+#  Give Soundcard it's own CPU [Core 4 (3)] . Put the OS/kernel on the 1st 3 CPUs [0-2] - same with X, 
+#  etc. Jackd and friends can play on the other 5 cores [5-7 are SMT, which is probably 
+#  fine. if not actually a good thing. being as their should be a lot of float/FPU use going on.
+#
+#  Some say disable SMT on RT - not on this 4790 [Intel i7, Haswell], i won't be.
+#  Hyperthreading has seems to work really well on this particular machine.
+
+# this should be elsewhere; allow more io requests in flight
+
+echo 2048 > /sys/block/sda/queue/nr_requests
+
+# Intel HDA / PCE - hw:0,0 
+
+# echo 0-7 > /proc/irq/47/smp_affinity_list
+
+# i915 Intel GMA 4600
+
+echo 1-3 > /proc/irq/41/smp_affinity_list
+
+# ethernet: eno1
+
+echo 1 > /proc/irq/44/smp_affinity_list
+
+# achi
+
+echo 0-1 > /proc/irq/43/smp_affinity_list
+
+# acpi
+
+echo 0-1 > /proc/irq/9/smp_affinity_list
+
+# xhci_hcd disabled in BIOS for Presonus
+
+# echo 0-7 > /proc/irq/42/smp_affinity_list
+
+# ehci_hcd:usb3
+
+echo 1-7 > /proc/irq/16/smp_affinity_list
+
+# ehci_hcd:usb4
+
+echo 1-7 > /proc/irq/23/smp_affinity_list
+
+# Xserver
+
+taskset -a -p -c 2 `pgrep X`
+
+# Pulseaudio
+
+taskset -a -p -c 0-7 `pgrep pulseaudio`
+
+exit 0
