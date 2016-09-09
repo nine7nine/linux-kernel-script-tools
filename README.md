@@ -20,4 +20,4 @@ $ ghz 3400
 
 * setcdl -  Simlpe script to adjust /dev/cpu_dma_latency manually. usage: 
 
-$ setcdl <value in hexidecimal>
+$ setcdl (value in hexidecimal)
