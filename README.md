@@ -14,10 +14,16 @@ cyclitest is a part of 'rt-tests' found here; https://git.kernel.org/cgit/utils/
 
 * procint is a wrapper for 'cat /proc/interrupts' in color.
 
-* ghz is a wrapper for cpupower frequency-set. You type ghz + frequency. 3.4ghz, for example; 
+* ghz - wrapper for cpupower frequency-set. You type ghz + frequency. 3.4ghz, for example; 
 
 $ ghz 3400
 
 * setcdl -  Simlpe script to adjust /dev/cpu_dma_latency manually. usage: 
 
 $ setcdl (value in hexidecimal)
+
+* pidaff - Check CPU affinity of a process and it's threads. usage:
+
+$ pidaff foo (app/process name)
+
+* cpuamap - script for creating a Cpu Affinity Map
