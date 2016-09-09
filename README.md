@@ -17,3 +17,7 @@ cyclitest is a part of 'rt-tests' found here; https://git.kernel.org/cgit/utils/
 * ghz is a wrapper for cpupower frequency-set. You type ghz + frequency. 3.4ghz, for example; 
 
 $ ghz 3400
+
+* setcdl -  Simlpe script to adjust /dev/cpu_dma_latency manually. usage: 
+
+$ setcdl <value in hexidecimal>
