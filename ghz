@@ -1,0 +1,6 @@
+#!/bin/sh
+GHZ="$1"GHZ""
+
+cpupower frequency-set -f "$GHZ"
+
+exit
