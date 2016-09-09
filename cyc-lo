@@ -1,0 +1,117 @@
+#!/bin/sh
+
+################################################################
+# 
+# Cyclictest: Idle Run test
+#
+
+# Functions
+
+function func_freshHeadr(){
+
+clear
+
+sleep 0.2
+
+tput setab 0
+}
+
+function func_CyHeader1(){
+echo -e "\e[1;30m-->\e[1;93mCyclictest: Hi-to-Low Priority Test \e[1;36m[No Load]\e[1;30m<--"
+echo -e "\e[1;34m <----------------------------------------------->\n"
+}
+
+function func_pause(){
+   read -p "$*"
+}
+
+# Start of (dislpayed) Script
+
+tput setab 0
+
+func_freshHeadr
+func_CyHeader1
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -e "    \e[1;34mThis test reduces priority with each run of cyclictest, giving an idea\n"
+echo -e "    of not only what high-priority maximum latencies will be, but also what\n" 
+echo -e "    low-prioriy maximum latencies tend to be.\n"
+
+echo -e "\e[1;96m    First (4) tests, have no load. \e[1;34mie: close any cpu hungry apps, please."
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+
+lpaSpinner
+echo -e "\e[1;92m"
+func_pause 'Press [Enter] key to continue...'
+
+echo -e "\e[1;91mStarting no CPU load Test" 
+
+# 1st Run
+
+echo -e "\e[1;92m"
+echo -e "\e[1;32mcyclictest --smp -p 95"
+lpaSpinner
+echo -e "\e[1;37m"
+echo -e "\e[1;96mPriority: fifo/95"
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -en "\e[1;37m"
+cyclictest --smp -p 95
+echo -e "\e[1;92m"
+echo -en "\e[1;37m"
+
+# 2nd Run 
+
+echo -e "\e[1;92m"
+echo -e "\e[1;96mPriority: fifo/75"
+lpaSpinner
+echo -e "\e[1;37m"
+echo -e "\e[1;32mcyclictest --smp -p 75"
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -en "\e[1;37m"
+cyclictest --smp -p 75
+echo -e "\e[1;92m"
+echo -en "\e[1;37m"
+
+# 3rd Run 
+
+echo -e "\e[1;92m"
+echo -e "\e[1;32mcyclictest --smp -p 50"
+lpaSpinner
+echo -e "\e[1;37m"
+echo -e "\e[1;96mPriority: fifo/50" 
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -en "\e[1;37m"
+cyclictest --smp -p 50
+echo -e "\e[1;92m"
+echo -en "\e[1;37m"
+
+# 4th Run 
+
+echo -e "\e[1;92m"
+echo -e "\e[1;32mcyclictest --smp -p 25"
+lpaSpinner
+echo -e "\e[1;37m"
+echo -e "\e[1;96mPriority: fifo/25" 
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -en "\e[1;37m"
+cyclictest --smp -p 25
+echo -e "\e[1;92m"
+echo -en "\e[1;37m"
+
+# 5th Run 
+
+echo -e "\e[1;92m"
+echo -e "\e[1;32mcyclictest --smp -p 12"
+lpaSpinner
+echo -e "\e[1;37m"
+echo -e "\e[1;96mPriority: fifo/12" 
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -en "\e[1;37m"
+cyclictest --smp -p 5
+echo -e "\e[1;92m"
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+lpaSpinner
+echo -e "\e[1;92m"
+func_pause 'Press [Enter] key to continue...'
+echo -e "\e[1;37m"
+exit 0
