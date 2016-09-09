@@ -1,0 +1,136 @@
+#!/bin/sh
+
+##############################################################
+#
+# Cyclictest: 100% CPU laod 
+#
+
+# Functions
+
+function func_freshHeadr(){
+
+clear
+
+sleep 0.2
+
+tput setab 0
+}
+
+function func_CyHeader2(){
+echo -e "\e[1;30m-->\e[1;93mCyclictest: Hi-to-Low Priority Test \e[1;91m[WARNING: 100% Load]\e[1;30m<--"
+echo -e "\e[1;34m <---------------------------------------------------------->\n"
+}
+
+function func_pause(){
+   read -p "$*"
+}
+
+# Start of (dislpayed) Script
+
+tput setab 0
+
+func_freshHeadr
+func_CyHeader2
+
+sleep 0.1
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -e "    \e[1;34mThis test reduces priority with each run of cyclictest, giving an idea\n"
+echo -e "    of not only what \e[1;96mhigh-priority\e[1;34m maximum latencies will be, but also what\n" 
+echo -e "    the \e[1;96mlower-prioriy\e[1;34m maximum latencis will be.\n\n"
+
+echo -e "\e[1;96m    Next, we will create \e[1;91m100% CPU load\e[1;96m, then we run the (4) tests, again."
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+
+echo -e "\e[1;92m"
+func_pause 'Press [Enter] key to continue...' 
+
+# create 100% Cpu load using 'yes' command. (detects number of CPUs for --smp tests),
+
+echo -e "\e[1;91mCreating 100% CPU load test" 
+
+CN=`grep processor /proc/cpuinfo | wc -l`; \
+  for i in `seq 1 $CN`; do \
+  yes >/dev/null & \
+  done
+
+func_pause 'Press [Enter] key to continue...' 
+
+# 1st Run
+
+echo -e "\e[1;92m"
+echo -e "\e[1;96mPriority: fifo/96" 
+
+echo -e "\e[1;37m"
+echo -e "\e[1;32mcyclictest --smp -p 96  \e[1;96m[Firewire] \e[1;34mFF/96+ =rcu0/migration/posixcpumr"
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -e "\e[1;37m"
+cyclictest --smp -p 95
+echo -e "\e[1;92m"
+echo -en "\e[1;37m"
+
+# 2nd Run 
+
+echo -e "\e[1;92m"
+echo -e "\e[1;96mPriority: fifo/89"
+
+echo -e "\e[1;37m"
+echo -e "\e[1;32mcyclictest --smp -p 89 \e[1;96m  [Jack on my system!]"
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -e "\e[1;37m"
+cyclictest --smp -p 89
+echo -e "\e[1;37m"
+echo -e "\e[1;92m"
+echo -en "\e[1;37m"
+
+# 3rd Run 
+
+echo -e "\e[1;92m"
+echo -e "\e[1;96mPriority: fifo/84"
+lpaSpinner
+echo -e "\e[1;37m"
+echo -e "\e[1;32mcyclictest --smp -n -p 84 \e[1;96m  [Jack (client) callback threads]"
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -en "\e[1;37m"
+cyclictest --smp -p 84
+echo -e "\e[1;92m"
+echo -en "\e[1;37m"
+
+# 4th Run 
+
+echo -e "\e[1;92m"
+echo -e "\e[1;96mPriority: fifo/38" 
+
+echo -e "\e[1;37m"
+echo -e "\e[1;32mcyclictest --smp -n -p 38 \e[1;96m  [Wine: L_RT_THREADS]"
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -en "\e[1;37m"
+cyclictest --smp -p 38
+echo -e "\e[1;92m"
+echo -en "\e[1;37m"
+
+# 5th Run 
+
+echo -e "\e[1;92m"
+echo -e "\e[1;96mPriority: fifo/20"
+
+echo -e "\e[1;37m"
+echo -e "\e[1;32mcyclictest --smp -n -p 20"
+echo -e "\e[1;34mpress ctrl-c to terminate/end run."
+echo -en "\e[1;37m"
+cyclictest --smp -p 5
+echo -e "\e[1;91m"
+
+echo -e "\e[1;91mKilling CPU load" 
+
+echo -e "\e[1;30m"
+killall -q yes
+sleep 0.5
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+
+echo -e "\e[1;92m"
+func_pause 'Press [Enter] key to continue...'
+
+echo -e "\e[1;37m"
+exit 0
