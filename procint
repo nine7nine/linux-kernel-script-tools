@@ -1,0 +1,41 @@
+#!/bin/bash
+
+################################################################
+# 
+# display contents of /proc/interrupts
+#
+
+# Functions
+
+function func_freshHeadr(){
+
+clear
+
+sleep 0.2
+
+tput setab 0
+}
+
+function func_pause(){
+   read -p "$*"
+}
+
+# Start of (dislpayed) Script
+
+tput setab 0
+
+func_freshHeadr
+
+echo -e "\e[1;30m-->\e[1;93mSystem Interrupt Layout\e[1;30m<--"
+echo -e "\e[1;34m <------------------------->\n"
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+
+echo -e "\e[1;93m cat /proc/interrupts"
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -en "\e[1;36m"
+cat '/proc/interrupts' 
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -e "\e[1;37m"
+tput setab 0
+exit 0
+
