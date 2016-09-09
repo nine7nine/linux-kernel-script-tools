@@ -1,0 +1,76 @@
+#!/bin/sh
+
+################################################################
+# 
+#                  RealtimeConfigQuickScan
+#
+
+# Functions
+
+function func_freshHeadr(){
+
+clear
+
+sleep 0.2
+
+tput setab 0
+}
+
+function func_pause(){
+   read -p "$*"
+}
+
+# Start of (dislpayed) Script
+
+tput setab 0
+
+func_freshHeadr
+
+sleep 0.2
+
+export SOUND_CARD_IRQ="19" # your Soundcard's IRQ
+
+echo -e "\e[1;30m-->\e[1;93mdownload/Running RealtimeConfigQuickScan.pl\e[1;30m<--"
+echo -e "\e[1;34m <--------------------------------------------->\n"
+
+# Download RealtimeConfigQuickScan
+#
+# you can also commented the 5 lines below and use a local copy (that's in your PATH)
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -e "\e[1;32mDownloading realtimeconfigquickscan.pl via Git."
+echo -e "\e[1;34mgit clone git://github.com/raboof/realtimeconfigquickscan.git"
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -en "\e[1;37m"
+rm -Rf realtimeconfigquickscan
+
+git clone git://github.com/raboof/realtimeconfigquickscan.git
+cd realtimeconfigquickscan
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+
+
+# Run RealtimeConfigQuickScan
+
+echo -e "\e[1;37m"
+echo -e "\e[1;32mRunning Script"
+echo -e "\e[1;34mperl ./realTimeConfigQuickScan.pl"
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -en "\e[1;37m"
+
+# Here you would substitute the PATH to your local copy, if using local copy.
+
+perl ./realTimeConfigQuickScan.pl -v
+cd .. 
+
+# Make sure to remove temperary files, but use func_pause, first.
+
+ echo -e "\e[1;30m--------------------------------------------------------------------------------"
+
+
+# Remove RTCQS Files/Folders
+
+rm -Rf realtimeconfigquickscan
+echo -e "\e[1;37m"
+tput setab 0
+exit 0
