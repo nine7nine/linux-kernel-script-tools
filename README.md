@@ -1,6 +1,6 @@
 # linux-kernel-script-tools
 
-This repo contains some very simple scripts or wrappers, mostly Linux-RT related.
+This repo contains some very simple bash scripts or wrappers, mostly Linux-RT related.
 
 * rtcqscan is a wrapper/downloader for the realtimeconfigquickscan.pl perl script. execute it in a folder (not /usr/bin).
 
