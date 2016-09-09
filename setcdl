@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Simlpe script to adjust /dev/cpu_dma_latency manually.
+#
+# usage: setcdl <value in hexidecimal>
+
+echo -e "Setting /dev/cpu_dma_latency to '$@' "
+
+env PMQOSl="$@" su -c '(echo -ne "$PMQOSl"; sleep 1000d) >/dev/cpu_dma_latency </dev/null 2>/dev/null'
+
+exit
