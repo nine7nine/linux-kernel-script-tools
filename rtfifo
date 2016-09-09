@@ -1,0 +1,71 @@
+#!/bin/sh
+
+########################################################################
+#
+# Look At Kernel Settings 
+#
+
+# Functions
+
+function func_freshHeadr(){
+
+clear
+
+sleep 0.2
+
+tput setab 0
+}
+
+function func_pause(){
+   read -p "$*"
+}
+
+# Start of (dislpayed) Script
+
+tput setab 0 && func_freshHeadr
+
+# Just a quick quick of some system values
+
+echo -e "\e[1;30m-->\e[1;93mShow all IRQ/SCHED_FIFO related kernel threads\e[1;30m<--"
+echo -e "\e[1;34m <------------------------------------------------>\n"
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -e "\e[1;34m /usr/bin/rtirq status"
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -en "\e[1;37m"
+/usr/bin/rtirq status
+
+echo -en "\e[1;37m"
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -e "\e[1;30m-->\e[1;92m How to manually Set the IRQ handler priorities\e[1;30m<--"
+echo -e "\e[1;34m <------------------------------------------------------>\n"
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -e "    \e[1;34mTo tune realtime scheduling classes and priorities [Manually], you can use\n" 
+echo -e "    \e[1;34mthe \e[1;36mchrt\e[1;34m command which is part of the schedtools package. \e[1;36mchrt \e[1;34mrequires\n"
+echo -e "    \e[1;34mroot privileges. \e[1;36mie: ninez:~ # chrt -f -p 90 1114\n"
+echo -e "    \e[1;34mnote: the rtirq script automates this process"
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -e "\e[1;92m"
+func_pause 'Press [Enter] key to continue...'
+
+func_freshHeadr
+
+echo -e "\e[1;30m-->\e[1;93mShow all SCHED_FIFO threads, sorted in decreasing priority\e[1;30m<--"
+echo -e "\e[1;34m <------------------------------------------------------------>\n"
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -e "\e[1;34m ps -eLo pid,cls,rtprio,pri,cmd| grep "FF" | sort -r"
+
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+echo -en "\e[1;37m"
+ps -eLo rtprio,cls,pid,pri,cmd | grep "FF" | sort -r
+
+echo -en "\e[1;37m"
+echo -e "\e[1;30m--------------------------------------------------------------------------------"
+
+echo -e "\e[1;37m"
+tput setab 0
+exit 0
+
