@@ -4,7 +4,7 @@ This repo contains some very simple bash scripts or wrappers, mostly Linux-RT re
 
 * rtcqscan is a wrapper/downloader for the realtimeconfigquickscan.pl perl script. execute it in a folder (not /usr/bin).
 
-* the cyc-hi/low scripts require cyclictest (for testing latency on rt-kernels). The cyc-hi script simulates 100% load on all cpu cores, while running cyclictest. In addition, the scripts will reduce priority after each test/benchmark is killed via CRTL-C. This helps to gives at different RT priority ranges, what kind of latency you can expect. At the end the script will kill  the simulated load.
+* the cyc-hi/low scripts require cyclictest (for testing latency on rt-kernels). The cyc-hi script simulates 100% load on all cpu cores, while running cyclictest. In addition, the scripts will reduce priority after each test/benchmark is killed via CRTL-C. This helps to to identify at each RT priority range, what kind of latency you can expect. At the end the script will kill  the simulated load.
 
 cyclitest is a part of 'rt-tests' found here; https://git.kernel.org/cgit/utils/rt-tests/rt-tests.git/
  
