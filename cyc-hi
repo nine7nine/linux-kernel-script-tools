@@ -87,7 +87,7 @@ echo -en "\e[1;37m"
 
 echo -e "\e[1;92m"
 echo -e "\e[1;96mPriority: fifo/84"
-lpaSpinner
+
 echo -e "\e[1;37m"
 echo -e "\e[1;32mcyclictest --smp -n -p 84 \e[1;96m  [Jack (client) callback threads]"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
