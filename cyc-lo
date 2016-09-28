@@ -74,13 +74,13 @@ echo -en "\e[1;37m"
 # 3rd Run 
 
 echo -e "\e[1;92m"
-echo -e "\e[1;32mcyclictest -n -m --smp -Sp84 -i100 -d0"
+echo -e "\e[1;32mcyclictest -n -m --smp -Sp75 -i100 -d0"
 
 echo -e "\e[1;37m"
-echo -e "\e[1;96mPriority: fifo/84" 
+echo -e "\e[1;96mPriority: fifo/75" 
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
-cyclictest -n -m --smp -Sp84 -i100 -d0
+cyclictest -n -m --smp -Sp75 -i100 -d0
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
 
