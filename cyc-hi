@@ -94,7 +94,7 @@ echo -e "\e[1;96mPriority: fifo/75"
 
 echo -e "\e[1;37m"
 echo -e "\e[1;32mchackbench &
-cyclictest -n -m --smp -Sp 64 -i100 -d0"
+cyclictest -n -m --smp -Sp 75 -i100 -d0"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
 hackbench &
