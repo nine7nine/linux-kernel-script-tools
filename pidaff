@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# check CPU affinity of process and it's threads
+# Check CPU affinity of a process and it's threads
 
 pname="$@" # for example
 

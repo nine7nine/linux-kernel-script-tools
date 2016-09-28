@@ -2,7 +2,7 @@
 
 ##############################################################
 #
-# Cyclictest: 100% CPU laod 
+# Cyclictest: 100% CPU laod test
 #
 
 # Functions
@@ -62,10 +62,12 @@ echo -e "\e[1;92m"
 echo -e "\e[1;96mPriority: fifo/96" 
 
 echo -e "\e[1;37m"
-echo -e "\e[1;32mcyclictest --smp -p 96  \e[1;96m[Firewire] \e[1;34mFF/96+ =rcu0/migration/posixcpumr"
+echo -e "\e[1;32mhackbench  &
+cyclictest -n -m --smp -Sp 97 -i100 -d0"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -e "\e[1;37m"
-cyclictest --smp -p 95
+hackbench  &
+cyclictest -n -m --smp -Sp 97 -i100 -d0
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
 
@@ -75,10 +77,12 @@ echo -e "\e[1;92m"
 echo -e "\e[1;96mPriority: fifo/89"
 
 echo -e "\e[1;37m"
-echo -e "\e[1;32mcyclictest --smp -p 89 \e[1;96m  [Jack on my system!]"
+echo -e "\e[1;32mhackbench  &
+cyclictest -n -m --smp -Sp 89 -i100 -d0"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -e "\e[1;37m"
-cyclictest --smp -p 89
+hackbench  &
+cyclictest -n -m --smp -Sp 89 -i100 -d0
 echo -e "\e[1;37m"
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
@@ -87,12 +91,14 @@ echo -en "\e[1;37m"
 
 echo -e "\e[1;92m"
 echo -e "\e[1;96mPriority: fifo/84"
-lpaSpinner
+
 echo -e "\e[1;37m"
-echo -e "\e[1;32mcyclictest --smp -n -p 84 \e[1;96m  [Jack (client) callback threads]"
+echo -e "\e[1;32mchackbench &
+cyclictest -n -m --smp -Sp 84 -i100 -d0"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
-cyclictest --smp -p 84
+hackbench &
+cyclictest -n -m --smp -Sp 84 -i100 -d0
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
 
@@ -102,10 +108,12 @@ echo -e "\e[1;92m"
 echo -e "\e[1;96mPriority: fifo/38" 
 
 echo -e "\e[1;37m"
-echo -e "\e[1;32mcyclictest --smp -n -p 38 \e[1;96m  [Wine: L_RT_THREADS]"
+echo -e "\e[1;32mhackbench  &
+cyclictest -n -m --smp -Sp 50 -i100 -d0"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
-cyclictest --smp -p 38
+hackbench  &
+cyclictest -n -m --smp -Sp 50 -i100 -d0
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
 
@@ -115,10 +123,12 @@ echo -e "\e[1;92m"
 echo -e "\e[1;96mPriority: fifo/20"
 
 echo -e "\e[1;37m"
-echo -e "\e[1;32mcyclictest --smp -n -p 20"
+echo -e "\e[1;32mhackbench &
+cyclictest -n -m --smp -Sp 25 -i100 -d0"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
-cyclictest --smp -p 5
+hackbench &
+cyclictest -n -m --smp -Sp 25 -i100 -d0
 echo -e "\e[1;91m"
 
 echo -e "\e[1;91mKilling CPU load" 
