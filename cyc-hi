@@ -59,7 +59,7 @@ func_pause 'Press [Enter] key to continue...'
 # 1st Run
 
 echo -e "\e[1;92m"
-echo -e "\e[1;96mPriority: fifo/96" 
+echo -e "\e[1;96mPriority: fifo/97" 
 
 echo -e "\e[1;37m"
 echo -e "\e[1;32mhackbench  &
@@ -90,22 +90,22 @@ echo -en "\e[1;37m"
 # 3rd Run 
 
 echo -e "\e[1;92m"
-echo -e "\e[1;96mPriority: fifo/84"
+echo -e "\e[1;96mPriority: fifo/75"
 
 echo -e "\e[1;37m"
 echo -e "\e[1;32mchackbench &
-cyclictest -n -m --smp -Sp 84 -i100 -d0"
+cyclictest -n -m --smp -Sp 64 -i100 -d0"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
 hackbench &
-cyclictest -n -m --smp -Sp 84 -i100 -d0
+cyclictest -n -m --smp -Sp 75 -i100 -d0
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
 
 # 4th Run 
 
 echo -e "\e[1;92m"
-echo -e "\e[1;96mPriority: fifo/38" 
+echo -e "\e[1;96mPriority: fifo/50" 
 
 echo -e "\e[1;37m"
 echo -e "\e[1;32mhackbench  &
@@ -120,7 +120,7 @@ echo -en "\e[1;37m"
 # 5th Run 
 
 echo -e "\e[1;92m"
-echo -e "\e[1;96mPriority: fifo/20"
+echo -e "\e[1;96mPriority: fifo/25"
 
 echo -e "\e[1;37m"
 echo -e "\e[1;32mhackbench &

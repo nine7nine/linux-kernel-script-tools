@@ -48,65 +48,65 @@ echo -e "\e[1;91mStarting no CPU load Test"
 # 1st Run
 
 echo -e "\e[1;92m"
-echo -e "\e[1;32mcyclictest --smp -p 95"
+echo -e "\e[1;32mcyclictest -n -m --smp -Sp98 -i100 -d0"
 
 echo -e "\e[1;37m"
-echo -e "\e[1;96mPriority: fifo/95"
+echo -e "\e[1;96mPriority: fifo/98"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
-cyclictest --smp -p 95
+cyclictest -n -m --smp -Sp98 -i100 -d0
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
 
 # 2nd Run 
 
 echo -e "\e[1;92m"
-echo -e "\e[1;96mPriority: fifo/75"
+echo -e "\e[1;96mPriority: fifo/89"
 
 echo -e "\e[1;37m"
-echo -e "\e[1;32mcyclictest --smp -p 75"
+echo -e "\e[1;32mcyclictest -n -m --smp -Sp89 -i100 -d0"
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
-cyclictest --smp -p 75
+cyclictest -n -m --smp -Sp89 -i100 -d0
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
 
 # 3rd Run 
 
 echo -e "\e[1;92m"
-echo -e "\e[1;32mcyclictest --smp -p 50"
+echo -e "\e[1;32mcyclictest -n -m --smp -Sp84 -i100 -d0"
 
 echo -e "\e[1;37m"
-echo -e "\e[1;96mPriority: fifo/50" 
+echo -e "\e[1;96mPriority: fifo/84" 
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
-cyclictest --smp -p 50
+cyclictest -n -m --smp -Sp84 -i100 -d0
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
 
 # 4th Run 
 
 echo -e "\e[1;92m"
-echo -e "\e[1;32mcyclictest --smp -p 25"
+echo -e "\e[1;32mcyclictest -n -m --smp -Sp50 -i100 -d0"
 
 echo -e "\e[1;37m"
-echo -e "\e[1;96mPriority: fifo/25" 
+echo -e "\e[1;96mPriority: fifo/50" 
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
-cyclictest --smp -p 25
+cyclictest -n -m --smp -Sp50 -i100 -d0
 echo -e "\e[1;92m"
 echo -en "\e[1;37m"
 
 # 5th Run 
 
 echo -e "\e[1;92m"
-echo -e "\e[1;32mcyclictest --smp -p 12"
+echo -e "\e[1;32mcyclictest -n -m --smp -Sp25 -i100 -d0"
 
 echo -e "\e[1;37m"
-echo -e "\e[1;96mPriority: fifo/12" 
+echo -e "\e[1;96mPriority: fifo/25" 
 echo -e "\e[1;34mpress ctrl-c to terminate/end run."
 echo -en "\e[1;37m"
-cyclictest --smp -p 5
+cyclictest -n -m --smp -Sp25 -i100 -d0
 echo -e "\e[1;92m"
 echo -e "\e[1;30m--------------------------------------------------------------------------------"
 
